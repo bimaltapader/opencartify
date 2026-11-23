@@ -1,0 +1,23 @@
+services:
+  database:
+    image: postgres:17-alpine
+    restart: 'no'
+    environment:
+      POSTGRES_DB: opencartify_inventory_integration_test
+      POSTGRES_USER: opencartify_inventory_test
+      POSTGRES_PASSWORD: ${OPENCARTIFY_TEST_DB_PASSWORD:?Set a test-only password through the integration test runner}
+    ports:
+      - "127.0.0.1:55433:5432"
+    volumes:
+      - inventory_integration_test_data:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U opencartify_inventory_test -d opencartify_inventory_integration_test
+      interval: 2s
+      timeout: 5s
+      retries: 15
+      start_period: 2s
+
+volumes:
+  inventory_integration_test_data:

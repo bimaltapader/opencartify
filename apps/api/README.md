@@ -57,6 +57,41 @@ $ pnpm run test:e2e
 $ pnpm run test:cov
 ```
 
+## Inventory PostgreSQL integration-test follow-up
+
+The inventory unit tests verify service behavior but mock Prisma, so they do
+not prove PostgreSQL row-locking or transaction rollback behavior. Add a
+database-backed integration suite when a dedicated disposable test database is
+available. The repository's existing Docker Compose PostgreSQL service can be
+used without adding dependencies, provided the test suite receives a separate
+`DATABASE_URL` and owns that database's lifecycle.
+
+The follow-up suite should run migrations against only that disposable database
+and verify: two simultaneous adjustments serialize through `SELECT ... FOR
+UPDATE`, the final quantity and movement ledger contain both changes without a
+lost update, and a forced movement-insert failure rolls back the inventory
+update. Do not point such tests at a development or production database.
+
+A future schema migration should also add database constraints for
+`quantity >= 0`, `reserved >= 0`, and `reserved <= quantity`. The inventory
+service enforces these invariants for manual adjustments today, but database
+constraints are needed to protect them across every future write path.
+
+## Inventory PostgreSQL integration tests
+
+Run the isolated inventory integration suite with:
+
+```powershell
+pnpm --filter api test:inventory:integration
+```
+
+This command creates a test-only PostgreSQL container on `127.0.0.1:55433`,
+uses the `opencartify_inventory_integration_test` database, runs migrations and
+inventory locking tests, then removes only the dedicated test Compose project
+and volume after a successful run. It refuses any database URL that does not
+match that exact isolated target. If a test fails, the test database is kept
+for investigation and the command does not perform cleanup.
+
 ## Deployment
 
 When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
