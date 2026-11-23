@@ -86,3 +86,13 @@ export type InventoryMovement = Prisma.InventoryMovementModel
  * 
  */
 export type RefreshToken = Prisma.RefreshTokenModel
+/**
+ * Model Cart
+ * 
+ */
+export type Cart = Prisma.CartModel
+/**
+ * Model CartItem
+ * 
+ */
+export type CartItem = Prisma.CartItemModel

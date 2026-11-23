@@ -1,4 +1,3 @@
-
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
@@ -9,6 +8,7 @@ import { AuthModule } from './auth/auth.module.js';
 import { StoresModule } from './stores/stores.module.js';
 import { ProductsModule } from './products/products.module.js';
 import { InventoryModule } from './inventory/inventory.module.js';
+import { CartModule } from './cart/cart.module.js';
 
 @Module({
   imports: [
@@ -20,6 +20,7 @@ import { InventoryModule } from './inventory/inventory.module.js';
     StoresModule,
     ProductsModule,
     InventoryModule,
+    CartModule,
   ],
   controllers: [AppController],
   providers: [AppService],

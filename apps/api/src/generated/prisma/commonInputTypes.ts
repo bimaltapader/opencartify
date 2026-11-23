@@ -378,6 +378,23 @@ export type EnumInventoryMovementTypeWithAggregatesFilter<$PrismaModel = never> 
   _max?: Prisma.NestedEnumInventoryMovementTypeFilter<$PrismaModel>
 }
 
+export type EnumCartStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.CartStatus | Prisma.EnumCartStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.CartStatus[] | Prisma.ListEnumCartStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CartStatus[] | Prisma.ListEnumCartStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCartStatusFilter<$PrismaModel> | $Enums.CartStatus
+}
+
+export type EnumCartStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CartStatus | Prisma.EnumCartStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.CartStatus[] | Prisma.ListEnumCartStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CartStatus[] | Prisma.ListEnumCartStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCartStatusWithAggregatesFilter<$PrismaModel> | $Enums.CartStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCartStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCartStatusFilter<$PrismaModel>
+}
+
 export type NestedUuidFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel>
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
@@ -749,6 +766,23 @@ export type NestedEnumInventoryMovementTypeWithAggregatesFilter<$PrismaModel = n
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumInventoryMovementTypeFilter<$PrismaModel>
   _max?: Prisma.NestedEnumInventoryMovementTypeFilter<$PrismaModel>
+}
+
+export type NestedEnumCartStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.CartStatus | Prisma.EnumCartStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.CartStatus[] | Prisma.ListEnumCartStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CartStatus[] | Prisma.ListEnumCartStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCartStatusFilter<$PrismaModel> | $Enums.CartStatus
+}
+
+export type NestedEnumCartStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CartStatus | Prisma.EnumCartStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.CartStatus[] | Prisma.ListEnumCartStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CartStatus[] | Prisma.ListEnumCartStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCartStatusWithAggregatesFilter<$PrismaModel> | $Enums.CartStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCartStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCartStatusFilter<$PrismaModel>
 }
 
 

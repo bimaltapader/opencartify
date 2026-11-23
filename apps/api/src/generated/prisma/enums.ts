@@ -50,3 +50,13 @@ export const InventoryMovementType = {
 } as const
 
 export type InventoryMovementType = (typeof InventoryMovementType)[keyof typeof InventoryMovementType]
+
+
+export const CartStatus = {
+  ACTIVE: 'ACTIVE',
+  CHECKED_OUT: 'CHECKED_OUT',
+  ABANDONED: 'ABANDONED',
+  MERGED: 'MERGED'
+} as const
+
+export type CartStatus = (typeof CartStatus)[keyof typeof CartStatus]
